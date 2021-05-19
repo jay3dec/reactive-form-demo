@@ -1,20 +1,52 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
 
-  <p class="h4 mb-4">Sign up</p>
+    <p class="h4 mb-4">Sign up</p>
 
-  <div class="form-row mb-4">
-      <div class="col">
-          <input type="text" formControlName="firstName" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+    <div class="form-row mb-4">
+        <div class="col custom-col">
+            <input type="text" formControlName="firstName" id="defaultRegisterFormFirstName" class="form-control"
+                placeholder="First name">
+            <span *ngIf="formSubmitted && userForm.get('firstName').hasError('required')">
+                * First Name is required
+            </span>
+        </div>
+        <div class="col">
+            <input type="text" formControlName="lastName" class="form-control"
+                placeholder="Last name">
+        </div>
+    </div>
+
+    <div class="custom-col">
+        <input type="email" formControlName="email" class="form-control mb-4"
+        placeholder="E-mail">
+        <span *ngIf="formSubmitted && userForm.get('email').hasError('duplicateEmailId')">
+            * Email Id already exists !!
+        </span>
+    </div>
+
+    <div class="custom-col emp-check">
+        <input class="form-check-input" type="checkbox" formControlName="employed" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Employed
+        </label>
       </div>
-      <div class="col">
-          <input type="text" formControlName="lastName" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
-      </div>
-  </div>
 
-  <input type="email" formControlName="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+    <div class="custom-col">
+        <input type="text" formControlName="companyName" class="form-control mb-4"
+        placeholder="Company Name">
+        <span *ngIf="formSubmitted && userForm.get('companyName').hasError('required')">
+            * Company Name is required
+        </span>
+    </div>
+    
+    <div class="custom-col">
+        <span *ngIf="formSubmitted && userForm.errors && userForm.errors.companyEmailError">
+            * Enter your company email address
+        </span>
+    </div>
 
-  <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+    <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
 
-  <hr>
+    <hr>
 
 </form>

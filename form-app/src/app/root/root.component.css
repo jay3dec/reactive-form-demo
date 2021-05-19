@@ -1,0 +1,16 @@
+.custom-col{
+    display: flex;
+    flex-direction: column;
+    /* align-content: space-between; */
+    align-items: flex-start;
+}
+
+.custom-col span{ 
+    color: red;
+    font-size: small;
+    margin-top: 0.25rem;
+ }
+ .emp-check{
+    padding-left: 25px;
+    margin-bottom: 10px;
+ }
